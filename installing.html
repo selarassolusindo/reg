@@ -1,0 +1,54 @@
+<textarea name="name" rows="40" cols="180">
+codeigniter 3.1.11
+    extract ke localhost/[newProject]
+
+adminlte [newest]
+    extract ke localhost/[newProject]/assets/adminlte
+
+hmvc
+    copy file MY_Loader.php & MY_Router.php ke localhost/[newProject]/application/core
+    copy folder MX ke localhost/[newProject]/application/third_party
+
+harviacode
+    copy ke localhost/[newProject]
+
+ion_auth
+    copy file ion_auth.php ke localhost/[newProject]/application/config
+    copy file auth.php ke localhost/[newProject]/application/controllers
+    copy file Ion_auth.php ke localhost/[newProject]/application/library
+    copy file Ion_auth_model.php ke localhost/[newProject]/application/models
+    copy folder auth ke localhost/[newProject]/application/views
+    copy file auth_lang.php ke localhost/[newProject]/application/language/english
+    copy file ion_auth_lang.php ke localhost/[newProject]/application/language/english
+
+mysql
+    create database dengan nama db_[newProject]
+    komposisi penamaan table ::
+    	master / setup = 30 tables
+    	t00_xxxx - t29_xxxx
+
+    	transaksi = 50 tables
+    	t30_xxxx - t79_xxxx
+
+    	setting = 10 tables
+    	t80_xxxx - t89_xxxx = 10 tables
+    	t90_users -- ion_auth
+    	t91_groups -- ion_auth
+    	t92_users_groups -- ion_auth
+    	t93_login_attempts -- ion_auth
+    	t94_saldoawalp
+    	t95_akunp
+    	t96_tglsaldoawal
+    	t97_saldoawal
+    	t98_akun
+    	t99_company
+    import table dari ion_auth.sql di db_[newProject]
+    rename table users menjadi t90_users
+    rename table groups menjadi t91_groups
+    rename table users_groups menjadi t92_users_groups
+    rename table login_attempts menjadi t93_login_attempts
+
+ubah file localhost/[newProject]/application/config/ion_auth.php
+    sesuaikan nama table sesuai perubahan
+
+</textarea>
