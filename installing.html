@@ -11,6 +11,7 @@ hmvc
 
 harviacode
     copy ke localhost/[newProject]
+    copy folder bootstrap, datatables, js ke localhost/[newProject]/assets
 
 ion_auth
     copy file ion_auth.php ke localhost/[newProject]/application/config
@@ -48,7 +49,98 @@ mysql
     rename table users_groups menjadi t92_users_groups
     rename table login_attempts menjadi t93_login_attempts
 
-ubah file localhost/[newProject]/application/config/ion_auth.php
+edit file localhost/[newProject]/application/config/ion_auth.php
     sesuaikan nama table sesuai perubahan
+
+untuk selanjutnya guna mempersingkat pengetikan dan pembacaan, maka default foldernya adalah ::
+    folder yang tidak disebutkan :: localhost/[newProject],
+    contoh :: apabila disebutkan folder "application" maka folder tersebut berada setelah localhost/[newProject]
+
+buat folder "modules" di folder "application"
+    untuk implementasi hmvc
+
+implementasi template adminlte
+    buat folder "_00_dashboard" di folder "application/modules"
+    buat folder "controllers" di "application/modules/_00_dashboard"
+    buat folder "views" di "application/modules/_00_dashboard"
+    copy file index.html di "assets/adminlte" ke "application/modules/_00_dashboard/views"
+    rename file index.html menjadi _00_dashboard_view.php di "application/modules/_00_dashboard/views"
+    copy welcome.php di "application/controllers" ke "application/modules/_00_dashboard/controllers"
+    rename file welcome.php menjadi _00_dashboard.php di "application/modules/_00_dashboard/controllers"
+    edit file _00_dashboard.php,
+        ubah
+        class Welcome extends CI_Controller {
+        menjadi
+        class _00_dashboard extends CI_Controller {
+
+        ubah
+        $this->load->view('welcome_message');
+        menjadi
+        $data['_view'] = '_00_dashboard_list';
+        $data['_caption'] = 'Dashboard';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+    edit file routes.php di "application/config",
+        ubah
+        $route['default_controller'] = 'welcome';
+        menjadi
+        $route['default_controller'] = '_00_dashboard';
+    edit file _00_dashboard_view.php di "application/modules/_00_dashboard/views",
+        cut mulai line 873 s.d. 1449 dan paste menjadi file _00_dashboard_list.php di "application/modules/_00_dashboard/views"
+        sisipkan di line 874 dengan
+        <?php $this->load->view($_view); ?>
+        ubah semua yang berhubungan dengan sumber file yang berasal dari "assets/adminlte"
+        href="
+        diganti dengan
+        href="<?php echo base_url() ?>assets/adminlte/
+
+        src="
+        diganti dengan
+        src="<?php echo base_url() ?>assets/adminlte/
+    edit file autoload.php di "application/config",
+        ubah
+        $autoload['helper'] = array();
+        menjadi
+        $autoload['helper'] = array('url');
+    copy file .htaccess ke "localhost/[newProject]"
+    edit file config.php di "application/config",
+        ubah
+        $config['base_url'] = '';
+        menjadi
+        // $config['base_url'] = '';
+        $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+        $config['base_url'] .= "://" . $_SERVER['HTTP_HOST'];
+        $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+    duplicate file _00_dashboard_list.php menjadi _00_dashboard_list_blank.php di "application/modules/_00_dashboard/views"
+    edit file _00_dashboard.php di "application/modules/_00_dashboard/controllers"
+        ubah
+        $data['_view'] = '_00_dashboard_list';
+        menjadi
+        $data['_view'] = '_00_dashboard_list_blank';
+
+        sisipkan
+        $data['_menu'] = '_00_dashboard_menu';
+        sebelum
+        $data['_view'] = '_00_dashboard_list_blank';
+    edit file _00_dashboard_view.php di "application/modules/_00_dashboard/views",
+        cut mulai line 208 s.d. 844 dan paste menjadi file _00_dashboard_menu.php di "application/modules/_00_dashboard/views"
+        sisipkan di line 208 dengan
+        <?php $this->load->view($_menu); ?>
+
+        ubah di line 222 menjadi
+        <h1 class="m-0"><?php echo $_caption ?></h1>
+
+implementasi harviacode
+    edit file database.php di "application/config"
+        ubah menjadi
+        'username' => 'root',
+        'database' => 'db_[newProject]',
+    edit file autoload.php di "application/config"
+        ubah menjadi
+        $autoload['libraries'] = array('database', 'session');
+
+implementasi dual-database, untuk localhost dan hosting
+    edit index.php
+    buat folder development dan production di "application/config"
+
 
 </textarea>

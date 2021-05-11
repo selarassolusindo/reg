@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2021 at 05:47 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: May 11, 2021 at 03:59 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_reg`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t00_sekolah`
+--
+
+CREATE TABLE `t00_sekolah` (
+  `idsekolah` int(11) NOT NULL,
+  `Nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t00_sekolah`
+--
+
+INSERT INTO `t00_sekolah` (`idsekolah`, `Nama`) VALUES
+(1, 'Sekolah Satu'),
+(2, 'Sekolah Dua'),
+(3, 'Sekolah Tiga'),
+(4, 'Sekolah Empat'),
+(5, 'Sekolah Lima');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t30_pendaftaran`
+--
+
+CREATE TABLE `t30_pendaftaran` (
+  `idpendaftaran` int(11) NOT NULL,
+  `idsekolah` int(11) NOT NULL,
+  `TglPendaftaran` date NOT NULL,
+  `idcalonsiswa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -114,6 +149,19 @@ CREATE TABLE `t93_login_attempts` (
 --
 
 --
+-- Indexes for table `t00_sekolah`
+--
+ALTER TABLE `t00_sekolah`
+  ADD PRIMARY KEY (`idsekolah`);
+
+--
+-- Indexes for table `t30_pendaftaran`
+--
+ALTER TABLE `t30_pendaftaran`
+  ADD PRIMARY KEY (`idpendaftaran`),
+  ADD UNIQUE KEY `idcalonsiswa` (`idcalonsiswa`);
+
+--
 -- Indexes for table `t90_users`
 --
 ALTER TABLE `t90_users`
@@ -147,6 +195,18 @@ ALTER TABLE `t93_login_attempts`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `t00_sekolah`
+--
+ALTER TABLE `t00_sekolah`
+  MODIFY `idsekolah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `t30_pendaftaran`
+--
+ALTER TABLE `t30_pendaftaran`
+  MODIFY `idpendaftaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t90_users`

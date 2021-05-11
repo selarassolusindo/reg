@@ -53,6 +53,24 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+
+	switch ($_SERVER["HTTP_HOST"]) {
+		case "localhost":
+			$env = "development";
+			define('DBPREFIX', 'db');
+			break;
+
+		case "reg.selusin.online":
+		case "selusin.online":
+			$env = "production";
+			define('DBPREFIX', 'u473805576');
+			break;
+
+		default:
+			$env = "development";
+			break;
+	}
+
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
@@ -66,7 +84,8 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		// error_reporting(-1);
+		error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 		ini_set('display_errors', 1);
 	break;
 
