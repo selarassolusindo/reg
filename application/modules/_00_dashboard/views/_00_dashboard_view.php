@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/plugins/summernote/summernote-bs4.min.css">
+
+  <!-- jQuery -->
+  <script src="<?php echo base_url() ?>assets/adminlte/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -260,7 +263,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url() ?>assets/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>assets/adminlte/plugins/jquery/jquery.min.js"></script> -->
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>assets/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

@@ -44,9 +44,9 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th class="text-right">NO.</th>
-				<th>IDSEKOLAH</th>
-				<th>TGLPENDAFTARAN</th>
-				<th>IDCALONSISWA</th>
+				<th>SEKOLAH</th>
+				<th>TGL. PENDAFTARAN</th>
+				<th>NAMA CALONSISWA</th>
 				<th class="text-center">PROSES</th>
             </tr>
 			<?php foreach ($t30_pendaftaran_data as $t30_pendaftaran) { ?>
