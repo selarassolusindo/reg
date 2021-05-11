@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2021 at 03:59 AM
+-- Generation Time: May 11, 2021 at 03:07 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -42,6 +42,17 @@ INSERT INTO `t00_sekolah` (`idsekolah`, `Nama`) VALUES
 (3, 'Sekolah Tiga'),
 (4, 'Sekolah Empat'),
 (5, 'Sekolah Lima');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t01_csiswa`
+--
+
+CREATE TABLE `t01_csiswa` (
+  `idcsiswa` int(11) NOT NULL,
+  `Nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -155,6 +166,12 @@ ALTER TABLE `t00_sekolah`
   ADD PRIMARY KEY (`idsekolah`);
 
 --
+-- Indexes for table `t01_csiswa`
+--
+ALTER TABLE `t01_csiswa`
+  ADD PRIMARY KEY (`idcsiswa`);
+
+--
 -- Indexes for table `t30_pendaftaran`
 --
 ALTER TABLE `t30_pendaftaran`
@@ -201,6 +218,12 @@ ALTER TABLE `t93_login_attempts`
 --
 ALTER TABLE `t00_sekolah`
   MODIFY `idsekolah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `t01_csiswa`
+--
+ALTER TABLE `t01_csiswa`
+  MODIFY `idcsiswa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t30_pendaftaran`

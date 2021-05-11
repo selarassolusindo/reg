@@ -21,6 +21,7 @@
         <?php
         switch ($this->uri->segment(1)) {
             case 't00_sekolah':
+            case 't01_csiswa':
                 echo 'menu-open';
                 break;
             default:
@@ -32,6 +33,7 @@
           <?php
           switch ($this->uri->segment(1)) {
               case 't00_sekolah':
+              case 't01_csiswa':
                   echo 'active';
                   break;
               default:
@@ -46,10 +48,19 @@
         </p>
       </a>
       <ul class="nav nav-treeview">
+        <!-- sekolah -->
         <li class="nav-item">
           <a href="<?php echo site_url('t00_sekolah') ?>" class="nav-link <?php echo $this->uri->segment(1) == 't00_sekolah' ? 'active' : ''; ?>">
             <i class="far fa-circle nav-icon"></i>
             <p>Sekolah</p>
+          </a>
+        </li>
+
+        <!-- calon siswa -->
+        <li class="nav-item">
+          <a href="<?php echo site_url('t01_csiswa') ?>" class="nav-link <?php echo $this->uri->segment(1) == 't01_csiswa' ? 'active' : ''; ?>">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Calon Siswa</p>
           </a>
         </li>
       </ul>
